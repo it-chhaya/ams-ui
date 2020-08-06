@@ -22,34 +22,12 @@ public class CategoryController {
     }
 
     @GetMapping("/categories")
-    public String index(ModelMap map) {
+    public String index() {
 
-        System.out.println("DATA = " + categoryService.getCategories());
 
-        map.addAttribute("api", categoryService.getCategories().getData());
 
-        return "index";
+        return "pages/category";
     }
 
-    @GetMapping("/categories/{id}")
-    public String getCategoryByIdView(ModelMap map, @PathVariable int id) {
-
-        ApiResponse<Category> category = new ApiResponse<>();
-
-        System.out.println("CONTROLLER");
-
-        try {
-            category = categoryService.getCategoryById(id).get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        map.addAttribute("api", category.getData());
-
-        System.out.println("END CONTROLLER");
-
-        return "index";
-
-    }
 
 }

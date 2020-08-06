@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container" layout:fragment="container">
+
+    <!--
+        *****************
+        Render content here
+        *****************
+    -->
+
+</div>
+
+<th:block layout:fragment="script">
+    <script>
+        $(function () {
+            console.log('Hello Script')
+        })
+    </script>
+</th:block>
+
+</body>
+</html>
