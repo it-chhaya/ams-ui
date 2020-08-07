@@ -21,42 +21,14 @@
 
         <!--Grid row-->
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4" th:each="recentArticle : ${recentArticles}" th:object="${recentArticle}">
                 <!--Zoom effect-->
                 <div class="view overlay zoom">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg"
+                    <img th:src="@{{imageUri}/{name}(imageUri=${imageUri},name=*{thumbnail})}"
                          class="img-fluid "
                          alt="zoom">
                     <div class="mask flex-center waves-effect waves-light pl-2 pr-2">
-                        <p class="white-text text-center font-weight-bold">To be a leading financial institution in
-                            South East
-                            Asia</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <!--Zoom effect-->
-                <div class="view overlay zoom">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg"
-                         class="img-fluid "
-                         alt="zoom">
-                    <div class="mask flex-center waves-effect waves-light pl-2 pr-2">
-                        <p class="white-text text-center font-weight-bold">To be a leading financial institution in
-                            South East
-                            Asia</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <!--Zoom effect-->
-                <div class="view overlay zoom">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(131).jpg"
-                         class="img-fluid "
-                         alt="zoom">
-                    <div class="mask flex-center waves-effect waves-light pl-2 pr-2">
-                        <p class="white-text text-center font-weight-bold">To be a leading financial institution in
-                            South East
-                            Asia</p>
+                        <p class="white-text text-center font-weight-bold" th:text="*{title}">Title</p>
                     </div>
                 </div>
             </div>
@@ -103,7 +75,7 @@
 
                 <!--Image-->
                 <div class="view overlay zoom rounded z-depth-1-half mb-3">
-                    <img src="https://mdbootstrap.com/img/Photos/Others/images/77.jpg" class="img-fluid"
+                    <img th:src="@{{imageUri}/{name}(imageUri=${imageUri}, name=${popularArticles.get(0).getThumbnail()})}" class="img-fluid"
                          alt="Sample post image">
                     <a>
                         <div class="mask rgba-white-slight waves-effect waves-light"></div>
@@ -115,35 +87,31 @@
                     <a href="" class="light-blue-text">
                         <h6>
                             <i class="fas fa-plane"></i>
-                            <strong> Travels</strong>
+                            <strong th:text="${popularArticles.get(0).getCategory().getName()}"> Travels</strong>
                         </h6>
                     </a>
                     <p>
-                        <strong>
+                        <strong th:text="${popularArticles.get(0).getPublishedDate()}">
                             <i class="far fa-clock"></i> 20/08/2018</strong>
                     </p>
                 </div>
                 <h3>
                     <a>
-                        <strong>This is title of the news</strong>
+                        <strong th:text="${popularArticles.get(0).getTitle()}">TITLE</strong>
                     </a>
                 </h3>
-                <p> Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod
-                    maxime
-                    placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-                </p>
+                <p th:text="${popularArticles.get(0).getDescription()}">Description</p>
 
                 <!--/Featured news-->
 
                 <hr>
 
                 <!--Small news-->
-                <div class="row">
+                <div class="row" th:each="i: ${#numbers.sequence(1, 3)}">
                     <div class="col-md-3">
-
                         <!--Image-->
                         <div class="view zoom overlay rounded z-depth-1">
-                            <img src="https://mdbootstrap.com/img/Photos/Others/photo8.jpg" class="img-fluid"
+                            <img th:src="@{{imageUri}/{name}(imageUri=${imageUri}, name=${popularArticles.get(i).getThumbnail()})}" class="img-fluid"
                                  alt="Minor sample post image">
                             <a>
                                 <div class="mask rgba-white-slight waves-effect waves-light"></div>
@@ -154,9 +122,9 @@
                     <!--Excerpt-->
                     <div class="col-md-9">
                         <p class="dark-grey-text">
-                            <strong>19/08/2018</strong>
+                            <strong th:text="${popularArticles.get(i).getPublishedDate()}">19/08/2018</strong>
                         </p>
-                        <a>Lorem ipsum dolor sit amet
+                        <a th:text="${popularArticles.get(i).getTitle()}">Lorem ipsum dolor sit amet
                             <i class="fas fa-angle-right float-right"></i>
                         </a>
                     </div>
@@ -165,69 +133,13 @@
                 <!--/Small news-->
 
                 <hr>
-
-                <!--Small news-->
-                <div class="row">
-                    <div class="col-md-3">
-
-                        <!--Image-->
-                        <div class="view zoom overlay rounded z-depth-1">
-                            <img src="https://mdbootstrap.com/img/Photos/Others/images/54.jpg" class="img-fluid"
-                                 alt="Minor sample post image">
-                            <a>
-                                <div class="mask rgba-white-slight waves-effect waves-light"></div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Excerpt-->
-                    <div class="col-md-9">
-                        <p class="dark-grey-text">
-                            <strong>18/08/2018</strong>
-                        </p>
-                        <a>Soluta nobis est eligendi
-                            <i class="fas fa-angle-right float-right"></i>
-                        </a>
-                    </div>
-
-                </div>
-                <!--/Small news-->
-
-                <hr>
-
-                <!--Small news-->
-                <div class="row">
-                    <div class="col-md-3">
-
-                        <!--Image-->
-                        <div class="view zoom overlay rounded z-depth-1">
-                            <img src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" class="img-fluid"
-                                 alt="Minor sample post image">
-                            <a>
-                                <div class="mask rgba-white-slight waves-effect waves-light"></div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Excerpt-->
-                    <div class="col-md-9">
-                        <p class="dark-grey-text">
-                            <strong>17/08/2018</strong>
-                        </p>
-                        <a>Voluptatem accusantium doloremque
-                            <i class="fas fa-angle-right float-right"></i>
-                        </a>
-                    </div>
-
-                </div>
-                <!--/Small news-->
 
             </div>
             <div class="col-lg-6 col-md-12">
 
                 <!--Image-->
                 <div class="view overlay zoom rounded z-depth-1-half mb-3">
-                    <img src="https://mdbootstrap.com/img/Photos/Others/images/77.jpg" class="img-fluid"
+                    <img th:src="@{{imageUri}/{name}(imageUri=${imageUri}, name=${popularArticles.get(4).getThumbnail()})}" class="img-fluid"
                          alt="Sample post image">
                     <a>
                         <div class="mask rgba-white-slight waves-effect waves-light"></div>
@@ -239,35 +151,32 @@
                     <a href="" class="light-blue-text">
                         <h6>
                             <i class="fas fa-plane"></i>
-                            <strong> Travels</strong>
+                            <strong th:text="${popularArticles.get(4).getCategory().getName()}">Category</strong>
                         </h6>
                     </a>
                     <p>
-                        <strong>
-                            <i class="far fa-clock"></i> 20/08/2018</strong>
+                        <strong th:text="${popularArticles.get(4).getPublishedDate()}">
+                            <i class="far fa-clock"></i>Published Date</strong>
                     </p>
                 </div>
                 <h3>
                     <a>
-                        <strong>This is title of the news</strong>
+                        <strong th:text="${popularArticles.get(4).getTitle()}">Title</strong>
                     </a>
                 </h3>
-                <p> Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod
-                    maxime
-                    placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-                </p>
+                <p th:text="${popularArticles.get(4).getDescription()}">Description</p>
 
                 <!--/Featured news-->
 
                 <hr>
 
                 <!--Small news-->
-                <div class="row">
+                <div class="row" th:each="i: ${#numbers.sequence(5, 7)}">
                     <div class="col-md-3">
 
                         <!--Image-->
                         <div class="view zoom overlay rounded z-depth-1">
-                            <img src="https://mdbootstrap.com/img/Photos/Others/photo8.jpg" class="img-fluid"
+                            <img th:src="@{{imageUri}/{name}(imageUri=${imageUri}, name=${popularArticles.get(i).getThumbnail()})}" class="img-fluid"
                                  alt="Minor sample post image">
                             <a>
                                 <div class="mask rgba-white-slight waves-effect waves-light"></div>
@@ -278,9 +187,9 @@
                     <!--Excerpt-->
                     <div class="col-md-9">
                         <p class="dark-grey-text">
-                            <strong>19/08/2018</strong>
+                            <strong th:text="${popularArticles.get(i).getPublishedDate()}">Published Date</strong>
                         </p>
-                        <a>Lorem ipsum dolor sit amet
+                        <a th:text="${popularArticles.get(i).getTitle()}">Title
                             <i class="fas fa-angle-right float-right"></i>
                         </a>
                     </div>
@@ -289,135 +198,22 @@
                 <!--/Small news-->
 
                 <hr>
-
-                <!--Small news-->
-                <div class="row">
-                    <div class="col-md-3">
-
-                        <!--Image-->
-                        <div class="view zoom overlay rounded z-depth-1">
-                            <img src="https://mdbootstrap.com/img/Photos/Others/images/54.jpg" class="img-fluid"
-                                 alt="Minor sample post image">
-                            <a>
-                                <div class="mask rgba-white-slight waves-effect waves-light"></div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Excerpt-->
-                    <div class="col-md-9">
-                        <p class="dark-grey-text">
-                            <strong>18/08/2018</strong>
-                        </p>
-                        <a>Soluta nobis est eligendi
-                            <i class="fas fa-angle-right float-right"></i>
-                        </a>
-                    </div>
-
-                </div>
-                <!--/Small news-->
-
-                <hr>
-
-                <!--Small news-->
-                <div class="row">
-                    <div class="col-md-3">
-
-                        <!--Image-->
-                        <div class="view zoom overlay rounded z-depth-1">
-                            <img src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" class="img-fluid"
-                                 alt="Minor sample post image">
-                            <a>
-                                <div class="mask rgba-white-slight waves-effect waves-light"></div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!--Excerpt-->
-                    <div class="col-md-9">
-                        <p class="dark-grey-text">
-                            <strong>17/08/2018</strong>
-                        </p>
-                        <a>Voluptatem accusantium doloremque
-                            <i class="fas fa-angle-right float-right"></i>
-                        </a>
-                    </div>
-
-                </div>
-                <!--/Small news-->
 
             </div>
         </div>
 
     </section>
 
-    <section class="wow fadeIn">
+    <section class="wow fadeIn" id="related-categories">
 
-        <h2 class="h1 text-left my-5 font-weight-bold">Related Categories</h2>
 
-        <div class="row mb-5">
-            <div class="col-md-12">
-                <!--Elegant-->
-                <button type="button" class="btn btn-elegant">Elegant</button>
-
-                <!--Unique-->
-                <button type="button" class="btn btn-unique">Unique</button>
-
-                <!--Pink-->
-                <button type="button" class="btn btn-pink">Pink</button>
-
-                <!--Purple-->
-                <button type="button" class="btn btn-purple">Purple</button>
-
-                <!--Deep-purple-->
-                <button type="button" class="btn btn-deep-purple">Deep-purple</button>
-
-                <!--Indigo-->
-                <button type="button" class="btn btn-indigo">Indigo</button>
-
-                <!--Light blue-->
-                <button type="button" class="btn btn-light-blue">Light blue</button>
-
-                <!--Cyan-->
-                <button type="button" class="btn btn-cyan">Cyan</button>
-
-                <!--Dark-green-->
-                <button type="button" class="btn btn-dark-green">Dark-green</button>
-
-                <!--Light-green-->
-                <button type="button" class="btn btn-light-green">Light-green</button>
-
-                <!--Yellow-->
-                <button type="button" class="btn btn-yellow">Yellow</button>
-
-                <!--Amber-->
-                <button type="button" class="btn btn-amber">Amber</button>
-
-                <!--Deep-orange-->
-                <button type="button" class="btn btn-deep-orange">Deep-orange</button>
-
-                <!--Brown-->
-                <button type="button" class="btn btn-brown">Brown</button>
-
-                <!--Blue-grey-->
-                <button type="button" class="btn btn-blue-grey">Blue-grey</button>
-
-                <!--MDB-->
-                <button type="button" class="btn btn-mdb-color">MDB</button>
-
-            </div>
-        </div>
 
     </section>
 
 </div>
 
 <th:block layout:fragment="script">
-    <script>
-        $(function () {
-            console.log('Hello Script')
-        })
-    </script>
+    <script src="/js/index.js"></script>
 </th:block>
 
 </body>
