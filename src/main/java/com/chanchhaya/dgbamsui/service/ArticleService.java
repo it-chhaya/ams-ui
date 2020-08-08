@@ -15,7 +15,9 @@ public class ArticleService {
 
     public ApiResponse<List<Article>> getPopularArticles() {
 
-        ArticleApi articleApi = ApiGenerator.createApi(ArticleApi.class);
+        ArticleApi articleApi = ApiGenerator.createApi(ArticleApi.class,
+                "chanchhaya",
+                "chanchhaya");
 
         ApiResponse<List<Article>> popularArticles = new ApiResponse<>();
 
@@ -36,7 +38,9 @@ public class ArticleService {
 
     public ApiResponse<List<Article>> getRecentArticles() {
 
-        ArticleApi articleApi = ApiGenerator.createApi(ArticleApi.class);
+        ArticleApi articleApi = ApiGenerator.createApi(ArticleApi.class,
+                "chanchhaya",
+                "chanchhaya");
 
         ApiResponse<List<Article>> recentArticles = new ApiResponse<>();
 

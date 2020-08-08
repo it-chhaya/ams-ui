@@ -21,7 +21,8 @@ public class AjaxCategoryController {
     @GetMapping("related-categories")
     public String getRelatedCategories(ModelMap modelMap) {
 
-        modelMap.addAttribute("categories", categoryService.getCategories().getData());
+        modelMap.addAttribute("categories", 
+                categoryService.getCategories().getData());
 
         return "ajax/categories-related";
     }

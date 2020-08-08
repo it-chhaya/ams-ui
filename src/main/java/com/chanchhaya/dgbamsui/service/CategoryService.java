@@ -46,7 +46,9 @@ public class CategoryService {
 
     public ApiResponse<List<Category>> getCategories() {
 
-        CategoryApi categoryApi = ApiGenerator.createApi(CategoryApi.class);
+        CategoryApi categoryApi = ApiGenerator.createApi(CategoryApi.class,
+                "chanchhaya",
+                "chanchhaya");
 
         ApiResponse<List<Category>> categories = new ApiResponse<>();
 

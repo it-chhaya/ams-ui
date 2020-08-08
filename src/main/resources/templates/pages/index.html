@@ -25,7 +25,7 @@
                 <!--Zoom effect-->
                 <div class="view overlay zoom">
                     <img th:src="@{{imageUri}/{name}(imageUri=${imageUri},name=*{thumbnail})}"
-                         class="img-fluid "
+                         class="img-fluid"
                          alt="zoom">
                     <div class="mask flex-center waves-effect waves-light pl-2 pr-2">
                         <p class="white-text text-center font-weight-bold" th:text="*{title}">Title</p>
